@@ -21,10 +21,10 @@ def ai_location_search(pdf_txt):
   Return: Locations or no location notification as string
   '''
   #split text at fixed text marker in document. Replace as needed.
-  split_flag = ("Temporal Inspection Agency\n" 
-                "TARDIS Station\n" 
-                "Gallifrey, Kasterborous System\n" 
-                "Time Vortex, Universe 1")
+  split_flag = ("TARDIS Quality Inspectors LLC\n" 
+                "2289 Farington Ave\n" 
+                "Atlanta, Georgia\n" 
+                "98922")
   #flag to control conditional logic path
   bool_flag = False
   #split text if flag found 
@@ -62,7 +62,7 @@ def ai_classify(line):
   location_examples = (
     "Gallifrey - Citadel; Time Rotor Room; Grid lines TARDIS.4/REG.5; Installation of Time Vortex Stabilizers\n"
     "Skaro - Dalek City; Emperor's Chambers; TARDIS.9/EX.3; Reinforcement of Dalek Battle Armor\n"
-    "Location: TARDIS; Roof; Mod 15 Outrigger Retrofit for Connection Type F; Console Room - Cloister Room/TARDIS.1\n"
+    "TARDIS; Roof; Mod 15 Outrigger Retrofit for Connection Type F; Console Room - Cloister Room/TARDIS.1\n"
     "Mondas - Cybermen Outpost; Cyber-Conversion Chambers; TARDIS.5/TQ-TR; Welding of Cyberman Support Struts\n"
     "Gallifrey - Academy; Prydonian Chapter Room; Grid lines TM.3/TARDIS.9; Installation of Time Scoop Mechanism\n"
     "Gallifrey - Time War Battlefield; OS-Interface; TB.1-TB.5/TARDIS.7; Threaded Rod Welding for Time Lord Weaponry\n"
@@ -126,7 +126,7 @@ def ai_analyze(text):
   location_examples = (
     "Gallifrey - Citadel; Time Rotor Room; Grid lines TARDIS.4/REG.5; Installation of Time Vortex Stabilizers\n"
     "Skaro - Dalek City; Emperor's Chambers; TARDIS.9/EX.3; Reinforcement of Dalek Battle Armor\n"
-    "Location: TARDIS; Roof; Mod 15 Outrigger Retrofit for Connection Type F; Console Room - Cloister Room/TARDIS.1\n"
+    "TARDIS; Roof; Mod 15 Outrigger Retrofit for Connection Type F; Console Room - Cloister Room/TARDIS.1\n"
     "Mondas - Cybermen Outpost; Cyber-Conversion Chambers; TARDIS.5/TQ-TR; Welding of Cyberman Support Struts\n"
     "Gallifrey - Academy; Prydonian Chapter Room; Grid lines TM.3/TARDIS.9; Installation of Time Scoop Mechanism\n"
     "Gallifrey - Time War Battlefield; OS-Interface; TB.1-TB.5/TARDIS.7; Threaded Rod Welding for Time Lord Weaponry\n"
@@ -154,7 +154,7 @@ def ai_analyze(text):
   #call openai - gpt-3 turbo model
   response = openai.ChatCompletion.create(
     model ="gpt-3.5-turbo",
-    temperature=0.2, #lower temperature to reduce randomness in response
+    temperature=0.1, #lower temperature to reduce randomness in response
     messages=[
       {"role": "system", "content": system_message},
       {"role": "user", "content": analyze_prompt}
